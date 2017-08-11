@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        String[] unsorted = new String[n];
+        for(int unsorted_i=0; unsorted_i < n; unsorted_i++){
+            unsorted[unsorted_i] = in.next();
+        }
+		
+        // your code goes here
+		String temp = "";
+		for(int i=0 ; i<n-1 ; i++){
+			for(int j=i+1 ; j<n ; j++){
+				if(unsorted[i].length() > unsorted[j].length()){
+					temp = unsorted[i];
+					unsorted[i]=unsorted[j];
+					unsorted[j]=temp;
+				}
+				else if(unsorted[i].length() == unsorted[j].length()){
+					if(fun(unsorted[i],unsorted[j])){
+						temp = unsorted[i];
+						unsorted[i]=unsorted[j];
+						unsorted[j]=temp;
+					}
+				}
+			}
+		}
+		for(String st : unsorted){
+			System.out.println(st);
+		}
+    }
+	
+	static boolean fun (String a , String b){
+		int digit =15;
+		int startIndex=0;
+		int endIndex = 0;
+		int lenght=a.length();
+		
+		while(startIndex<lenght){
+			endIndex = startIndex + digit > lenght? lenght : startIndex + digit;
+			long aa = Long.parseLong(a.substring(startIndex,endIndex));
+			long bb = Long.parseLong(b.substring(startIndex,endIndex));
+			if(aa> bb){
+				return true;
+			}else if(aa<bb){
+				return false;
+			}
+			startIndex+=digit;
+		}
+		return false;
+	}
+}
