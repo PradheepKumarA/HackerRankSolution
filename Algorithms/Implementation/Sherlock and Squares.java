@@ -7,20 +7,15 @@ public class Solution {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		int []ar = new int[n];
 		for(int i=0 ; i<n ; i++ ){
-			ar[i] = in.nextInt();
-		}
-		
-		//business logic
-		int []count = new int[100];
-		for(int i=0 ; i<n ; i++ ){
-			count[ar[i]]++;
-		}
-		
-		//output
-		for(int c : count){
-			System.out.print(c + " ");
+			int lower = in.nextInt();
+			int higher = in.nextInt();
+			int base = (int)Math.ceil(Math.sqrt(lower));
+			int count=0;
+			for(int j=base ; j*j<=higher ; j++){
+				count++;
+			}
+			System.out.println(count);
 		}
     }
 }
