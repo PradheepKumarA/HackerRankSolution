@@ -6,15 +6,15 @@ import java.util.regex.*;
 
 public class Solution {
 
-    static String funnyString(String s){
+    static int alternatingCharacters(String s){
         // Complete this function
-		int length = s.length();
-		for(int i=1 ; i<length ; i++ ){
-			if(Math.abs(s.charAt(i) - s.charAt(i-1)) !=  Math.abs(s.charAt(length-i-1) - s.charAt(length-i))){
-				return "Not Funny";
+		int delete=0;
+		for(int i=0 ; i< s.length()-1 ; i++){
+			if(s.charAt(i)==s.charAt(i+1)){
+				delete++;
 			}
 		}
-		return "Funny";
+		return delete;
     }
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Solution {
         int q = in.nextInt();
         for(int a0 = 0; a0 < q; a0++){
             String s = in.next();
-            String result = funnyString(s);
+            int result = alternatingCharacters(s);
             System.out.println(result);
         }
     }

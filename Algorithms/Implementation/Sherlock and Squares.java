@@ -2,23 +2,20 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
+
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-		    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		String steps = in.next();
-		int level=0 ,valley=0;
-		for(char ch : steps.toCharArray()){
-			if(ch == 'U'){
-				level++;
-			}else{
-				level--;
-				if(level == -1){
-					valley++;
-				}
+		for(int i=0 ; i<n ; i++ ){
+			int lower = in.nextInt();
+			int higher = in.nextInt();
+			int base = (int)Math.ceil(Math.sqrt(lower));
+			int count=0;
+			for(int j=base ; j*j<=higher ; j++){
+				count++;
 			}
+			System.out.println(count);
 		}
-		System.out.println(valley);
     }
 }
